@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Last 60 Seconds</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="startScreen" class="screen start-screen">
+    <div class="start-vignette"></div>
+    <div class="start-content">
+      <div class="eyebrow">A CINEMATIC PUZZLE ADVENTURE</div>
+      <h1>The Last <span>60 Seconds</span></h1>
+      <p>Every choice changes what happens next.</p>
+      <div class="start-copy">The room remembers what you do. Investigate quickly, connect the clues, and escape before time runs out.</div>
+      <button id="startBtn" class="primary-btn">Start Game <span>→</span></button>
+      <div class="start-hint">Best experienced with sound on • No internet required</div>
+    </div>
+  </div>
+
+  <main id="gameScreen" class="game-screen hidden">
+    <header class="hud">
+      <div class="hud-title">
+        <div class="mini-mark">60</div>
+        <div>
+          <div class="game-name">THE LAST 60 SECONDS</div>
+          <div id="stageLabel" class="stage-label">ROOM I · BEFORE</div>
+        </div>
+      </div>
+      <div class="hud-center">
+        <div class="timer-label">TIME REMAINING</div>
+        <div id="timer" class="timer">60</div>
+      </div>
+      <div class="hud-stats">
+        <div><span>SCORE</span><strong id="score">0</strong></div>
+        <div><span>STATE</span><strong id="stateLabel">UNCHANGED</strong></div>
+      </div>
+    </header>
+
+    <div id="notice" class="notice" aria-live="polite"></div>
+
+    <section class="game-wrap">
+      <div id="room" class="room">
+        <div class="room-glow"></div>
+        <div class="ceiling-light"></div>
+        <div class="floor"></div>
+        <div class="window-light"></div>
+
+        <button class="object clock" data-object="clock" aria-label="Wall clock">
+          <span class="clock-face"><i class="hand hour"></i><i class="hand minute"></i><b>12</b><b>3</b><b>6</b><b>9</b></span>
+          <span class="object-tag">CLOCK</span>
+        </button>
+
+        <button class="object painting" data-object="painting" aria-label="Painting">
+          <span class="painting-frame"><span class="painting-art"><i></i><em></em></span></span>
+          <span class="object-tag">PAINTING</span>
+        </button>
+
+        <button class="object desk" data-object="desk" aria-label="Desk">
+          <span class="desk-top"></span><span class="desk-drawer"></span><span class="desk-leg l"></span><span class="desk-leg r"></span>
+          <span class="object-tag">DESK</span>
+        </button>
+
+        <button class="object chest" data-object="chest" aria-label="Locked chest">
+          <span class="chest-lid"></span><span class="chest-body"></span><span class="lock"></span>
+          <span class="object-tag">CHEST</span>
+        </button>
+
+        <button class="object bookshelf" data-object="bookshelf" aria-label="Bookshelf">
+          <span class="shelf-frame"></span>
+          <span class="book b1"></span><span class="book b2"></span><span class="book b3"></span><span class="book b4"></span><span class="book b5"></span>
+          <span class="book b6"></span><span class="book b7"></span><span class="book b8"></span><span class="book b9"></span>
+          <span class="object-tag">BOOKS</span>
+        </button>
+
+        <button class="object door" data-object="door" aria-label="Exit door">
+          <span class="door-slab"><span class="knob"></span><span class="door-crack"></span></span>
+          <span class="object-tag">EXIT</span>
+        </button>
+
+        <div id="timelineEcho" class="timeline-echo hidden">
+          <span class="echo-icon">◈</span>
+          <div><strong>You change the future.</strong><small>The room is no longer the room you entered.</small></div>
+        </div>
+
+        <div id="newClue" class="new-clue hidden">A fresh clue has appeared...</div>
+      </div>
+
+      <aside class="journal">
+        <div class="journal-head">
+          <span>FIELD NOTES</span><span id="actionsCount">0 ACTIONS</span>
+        </div>
+        <div id="clueLog" class="clue-log">
+          <div class="empty-log">Investigate the room.<br><span>Every detail may matter.</span></div>
+        </div>
+        <div class="inventory">
+          <div class="inventory-title">DISCOVERED</div>
+          <div id="inventoryItems" class="inventory-items"><span class="empty-inventory">Nothing yet</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button id="modalClose" class="modal-close" aria-label="Close">×</button>
+        <div id="modalIcon" class="modal-icon">◈</div>
+        <div id="modalTitle" class="modal-title"></div>
+        <div id="modalText" class="modal-text"></div>
+        <div id="modalExtra"></div>
+        <button id="modalAction" class="primary-btn modal-action hidden">Continue</button>
+      </div>
+    </div>
+
+    <div id="ending" class="ending hidden">
+      <div class="ending-particles"></div>
+      <div class="ending-card">
+        <div id="endingKicker" class="eyebrow"></div>
+        <h2 id="endingTitle"></h2>
+        <p id="endingText"></p>
+        <div id="endingStats"></div>
+        <button id="restartBtn" class="primary-btn">Restart Timeline <span>↻</span></button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
